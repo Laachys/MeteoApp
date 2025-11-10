@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+    <div class="weather-card" [class.weather-card-sticky]="isSticky"   [ngStyle]="isSticky ? {'top.px': topOffset} : {}" id="weatherCard">
+        <div *ngIf="currentValue as v" class="weather-card-content">
+            <div class="weather-card-title">
+                <h2>{{ isSticky ? 'Datos en tiempo real:' : 'Datos en tiempo real' }}</h2>
+            </div>
+            <div class="weather-card-info">
+                <div class="weather-card-info-time">
+                    <p *ngIf="v.time != null">
+                        <strong>Hora:</strong> {{ v.time }}
+                    </p>
+                </div>
+                <div class="weather-card-info-temperature">
+                    <p *ngIf="v.value != null">
+                        <strong>Temperatura:</strong> {{ v.value }} ºC
+                    </p>
+                </div>
+                <div class="weather-card-info-power">
+                    <p *ngIf="v.power != null">
+                        <strong>Energía:</strong> {{ v.power | number:'1.0-2' }} kWh
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="weather-chart">
+        <div class="weather-chart-title">
+            <h2> Gráficas en tiempo real </h2>
+        </div>
+        <div class="weather-chart-content">
+            <div class="weather-chart-content-temperature">
+                <h3>Temperatura en tiempo real</h3>
+                <div class="chart-wrapper">
+                    <ngx-charts-line-chart [results]="temperatureChartData" [scheme]="temperatureColorScheme"
+                        [legend]="true" [xAxis]="true" [yAxis]="true" [autoScale]="true" [animations]="true"
+                        [xAxisTickFormatting]="xAxisTickFormatting">
+                    </ngx-charts-line-chart>
+                </div>
+            </div>
+            <div class="weather-chart-content-power">
+                <h3>Potencia en tiempo real</h3>
+                <div class="chart-wrapper">
+                    <ngx-charts-line-chart [results]="powerChartData" [scheme]="powerColorScheme" [legend]="true"
+                        [xAxis]="true" [yAxis]="true" [autoScale]="true" [animations]="true" [xAxisTickFormatting]="xAxisTickFormatting">
+                    </ngx-charts-line-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="weather-card">
+        <div *ngIf="currentValue as v" class="weather-card-content">
+            <div class="weather-card-title">
+                <h2> Media de datos</h2>
+            </div>
+            <div class="weather-card-info">
+                <div class="weather-card-info-temperature-average">
+                    <p *ngIf="v.time != null">
+                        <strong>Temperatura media: </strong>  {{ averageTemperature !== null ? (averageTemperature | number:'1.2-2') + ' °C' : '—' }}
+                    </p>
+                </div>
+                <div class="weather-card-info-power-average">
+                    <p *ngIf="v.power != null">
+                        <strong>Energía media:</strong>  {{ totalEnergyKWh !== null ? (totalEnergyKWh | number:'1.2-2') + ' kWh' : '—' }}
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

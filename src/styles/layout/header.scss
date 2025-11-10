@@ -1,0 +1,46 @@
+/* Archivo donde están definidos todos los estilos del header*/
+@use "../base/variables" as *;
+
+header{
+    position: sticky;
+    top: 0;
+
+    .mat-toolbar{
+        background-color: $primary-gray;
+        display: flex;
+        padding: 1rem 2rem;
+        flex-direction: column;    
+        height: max-content;
+
+        .title-owner{
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+
+            @media (min-width: 600px) {
+                font-size: 1.75rem;
+            }
+        }
+
+        .logo{
+            // width: 50%;
+            max-height: 90px;
+            @media (min-width: 600px) {
+                // width: 25%;
+
+            }
+        }
+
+         @media (min-width: 600px) {
+            flex-direction: row;
+            padding: 0 4rem;
+            gap: 2.5rem;
+
+        }
+    }
+
+    //Si no aplico esta regla, la leyenda de los gráficos se mostraba encima en el header, (mas visible en mobile)
+    &:not(.legend-title){
+        z-index: 1000;
+    }
+}

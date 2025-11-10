@@ -1,0 +1,14 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+
+app.use(express.static(path.join(__dirname, 'dist/Meteo-app/browser')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/Meteo-app/browser/index.html'));
+});
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Servidor ejecutándose en http://localhost:${port}`);
+});
