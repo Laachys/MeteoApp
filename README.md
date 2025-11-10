@@ -1,6 +1,6 @@
 # 🌤️ MeteoAPP
 
-**MeteoAPP* es una aplicación desarrollada en Angular que muestra, a partir de un archivo YAML de datos meteorológicos, la evolución de la **temperatura** y la **energía (kW)** en tiempo real.
+**MeteoAPP** es una aplicación desarrollada en Angular que muestra, a partir de un archivo YAML de datos meteorológicos, la evolución de la **temperatura** y la **energía (kW)** en tiempo real.
 
 Cada 5 segundos actualiza la información simulando un entorno dinámico, mostrando además los valores promedio acumulados desde que se inicia la aplicación.
 
